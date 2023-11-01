@@ -1,0 +1,643 @@
+\documentclass{article}
+\input{macros.tex}
+\begin{document}
+
+% Cover Page and ToC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{Algorithms \& Data Structures}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{CSCI 382} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Erica Blum} \\ 
+		2023\\
+		Notes by Aliya Ghassaei}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Asymptotic notation}
+    \subsection{Definitions}
+
+        \subsubsection{Big-$O$}
+            \textbf{Intuition: }If $f(n) \in O(g(n))$ then $f(n)$ grows no faster than $g(n)$. $g$ is an asymptotic upper bound for $f$.
+            \begin{definition}
+                $O(g(n)) :=  \{f(n) : \exists ~ c, n_0 > 0 ~|~ 0 \leq f(n) \leq c \cdot g(n) \text{ for all } n \geq  n_0 \} $
+            \end{definition}
+
+        \subsubsection{Big-$\Omega$}
+            \textbf{Intuition: }If  $f(n) \in \Omega(g(n))$, $f(n)$ grows at least as fast as $g(n)$. $f$ is a lower bound on $f$.
+            \begin{definition}
+                $\Omega(g(n)) := \{f(n) : \exists ~ c,n_0 > 0 ~|~ 0 \leq   c \cdot g(n) \leq f(n) \text{ for all } n \geq n_0\}$
+            \end{definition}
+
+        \subsubsection{Big-$\Theta$}
+            \textbf{Intuition: }$f(n)$ grows at the same rate/within a constant factor of $g(n)$
+            \begin{definition}
+                $\Theta(g(n)) := \{ f(n) : \exists ~ c_1, c_2, n_0 > 0 ~|~ 0 \leq c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) \text{ for all } n \geq  n_0 \}$
+            \end{definition}
+            \begin{theorem}
+                For any two functions $f(n)$ and $g(n)$, $f(n) = \Theta(g(n)) \iff f(n) = O(g(n)) $ and $f(n) = \Omega(g(n))$
+            \end{theorem}
+
+
+        \subsubsection{Little-$o$}
+        \begin{definition}
+            $o(g(n)) := \{ f(n) : \text{for any }c > 0, \exists ~ n_0 >0 ~|~ 0 \leq f(n) < c \cdot g(n) \text{ for all } n \geq  n_0 \}$
+        \end{definition}
+        \subsubsection{Little-$\omega$}
+        \begin{definition}
+            $\omega(g(n)) := \{ f(n) : \text{for any }c > 0, \exists ~ n_0 >0 ~|~ 0 \leq c \cdot g(n) < f(n) \text{ for all } n \geq  n_0 \}$
+        \end{definition}
+        \begin{theorem}
+            $f(n) \in \omega g(n) \iff g(n) \in o(f(n))$
+        \end{theorem}
+
+        \subsection{Proofs strategies}
+            \subsubsection{Proving from definition}
+            This means that you'd use the definition to prove that a function $g$ is in some complexity class.\\
+            \textbf{Steps: }
+            \begin{enumerate}
+                \item 
+            \end{enumerate}
+            \textbf{Example: }
+
+            \subsubsection{Proving using limit properties}
+            Use the following properties:
+            \subsubsection{Helpful properties:}
+            \textbf{Transitivity: }
+            \begin{align*}
+                f(n) &= \Theta(g(n)) \tand g(n) = \Theta(h(n)) &\implies f(n) &= \Theta(h(n))\\
+                f(n) &= O(g(n)) \tand g(n) = O(h(n)) &\implies f(n) &= O(h(n))\\
+                f(n) &= \Omega(g(n)) \tand g(n) = \Omega(h(n)) &\implies f(n) &= \Omega(h(n))\\
+                f(n) &= o(g(n))) \tand g(n) = o(h(n)) &\implies f(n) &= o(h(n))\\
+                f(n) &= \omega(g(n)) \tand g(n) = \omega(h(n)) &\implies f(n) &= \omega (h(n))
+            \end{align*}
+            \textbf{Reflexivity: }
+            \begin{align*}
+                f(n) &= \Theta(f(n))\\
+                f(n) &= O(f(n))\\
+                f(n) &= \Omega(f(n))
+            \end{align*}
+            \textbf{Symetry: }
+            \begin{align*}
+                f(n) = \Theta (g(n)) \iff g(n = \Theta(f(n)))
+            \end{align*}
+            \textbf{Transpose symetry: }
+            \begin{align*}
+                f(n) = O(g(n)) \iff g(n) = \Omega(f(n))\\
+                f(n) = o(g(n)) \iff g(n) = \omega (f(n))
+            \end{align*}
+
+            \textbf{Limit laws: }
+
+            {\centering
+            	\begin{tabular}{ll}
+            	$\lim_{n\to\infty}f(n)/g(n) \in[0,\infty)$ &	$\Rightarrow f= O(g)$ \\
+            	$\lim_{n\to\infty}f(n)/g(n) \in (0,\infty] $ &		$\Rightarrow f= \Omega(g)$ \\
+            	$\lim_{n\to\infty}f(n)/g(n) \in (0,\infty)$  &	$\Rightarrow f= \Theta(g)$ \\
+            	$\lim_{n\to\infty}f(n)/g(n) = 0$  &	$\Rightarrow f= o(g)$ \\
+            	$\lim_{n\to\infty}f(n)/g(n) = \infty$  &	$\Rightarrow f= \omega(g)$
+            	\end{tabular}\par
+            }
+
+
+        \subsubsection{Recurrences (substitution, recurrence trees, master theorem)}
+        \begin{enumerate}
+            \item given recurrance relation, prove that it's in some class
+            \item method: (recurrence tree) -> guess, -> substitution method
+            \item look on recurrence sheet 
+            \item ref sheet will have mast theorem, properties or relations for exponents and logarithms, summations
+        \end{enumerate}
+        \subsubsection{Models of computation (comparison model, random access model)}
+    \subsection{Solving problems by reducing to searching (choose + apply a data structure)
+}
+
+
+\section{Interfaces \& implementations}
+
+    \textbf{Interfaces:} set, sequence, priority queue\\
+    \textbf{Implementations:} arrays, sorted arrays, linked lists, hash tables, BSTs, red-black trees, min/max heap
+
+\subsubsection{Priority queue interface}
+\begin{enumerate}
+    \item heap
+\end{enumerate}
+\subsection{Solving problems by reducing to sorting (choose + apply a sorting algorithm)}
+\begin{enumerate}
+    \item Mergesort
+    Insertion sort
+    Selection sort
+    Heapsort
+    
+\end{enumerate}
+\subsection{Solving problems by designing a new algorithm}
+\begin{enumerate}
+    \item Brute force
+    “Decrease and conquer”
+    Divide and conquer
+\end{enumerate}
+
+
+\newpage
+\section{Introduction}
+    \subsection{Vocabulary}
+        \begin{enumerate}
+            \item interface: 
+            \item implementation
+            \item array-based (example: array/list)
+            \item static: region of memory stays static
+            \item pointer-based (ex: linked list)
+            \item dynamic
+        \end{enumerate}
+
+\section{Data Structures}
+
+sequence data structute operations in O\\
+\begin{tabular}{|c||c|c|c|c|c|}
+    \hline
+    Implementation & \code{build(X)} & \code{get\_at}/\code{set\_at} & \code{insert\_first}/\code{delete\_first}& insert/delete last & insert at/delete at \\
+    \hline
+    array & $n$ & 1 & $n$ & $n$ & $n$ \\
+    linked list & $n$ & $n$ & 1 &$n$ & $n$ \\
+    dynamic array & $n$ & 1 & $n$ & $1_{(a)}$ & $n$ \\
+    binary tree & $n \log n$ & $h$ & $h$ & $h$ & $h$ \\
+
+    \hline
+\end{tabular}\\
+\vspace{.5cm}
+
+
+
+Set data structute operations in O\\
+\begin{tabular}{|c||c|c|c|c|c|}
+    \hline
+    Implementation & \code{build(X)} & \code{find(k)} & \code{insert(x)}/\code{delete(x)} & \code{find\_min/max()} & \code{find\_prev/next} \\
+    \hline
+    array & $n$ & $n$ & $n$ & $n$ & $n$ \\
+    Sorted array & $n \log n$ & $n$ & $n$ &1 & $\log n$ \\
+    direct access array & $u$ & 1 & $1$ & $u$ & $u$ \\
+    Hash table & $n_{(e)}$ & $1_{(e)}$ & $1_{(a)(e)}$ & $n$ & $n$ \\
+    binary tree & $n$ & $h$ & $h$ & $h$ & $h$ \\
+    \hline
+\end{tabular}
+    \subsection{Sequences}
+        Given a collection of elements called \code{X}, store elements $x_0, \dots, x_{n-1}$
+        \subsubsection{Static Operations}
+            \begin{enumerate}
+                \item \code{build(X)} - builds the sequence from \code{X}
+                \item \code{iter\_seq()} output items in order
+                \item \code{len()} -  returns the number of elements in \code{X}
+                \item \code{get\_at(i)} - returns item at index $i$
+                \item \code{set\_at(i, x)} - insert $x$ at location $i$ 
+            \end{enumerate}
+        \subsubsection{Dynamic Operations}
+        Dynamic sequences use static sequence operations in addition to these operations:
+            \begin{enumerate}
+                \item \code{insert\_at(i, x)} - inserts item $x$ at location $i$
+                \item \code{delete\_at(i)} - deletes and returns item at location $i$
+            \end{enumerate}
+    \subsection{Sets}
+        \subsubsection{Static Operations}
+            \begin{enumerate}
+                \item \code{build(X)} - builds set
+                    \subitem - with array implementation, \code{build(X)} $\in O(n)$ where $n = |X|$
+                \item \code{len()} - returns $|X|$
+                \item \code{find(k)} - returns item with key $k$
+                    \subitem - with array implementation, \code{find(k)} $\in O(n)$ where $n = |X|$
+                \item \code{find\_min()} - returns item with smallest key
+                \item \code{find\_max()} - returns item with largest key
+                \item \code{find\_next(k)} - return next smallest item from $k$ (?)
+                \item \code{find\_prev(k)} - return next largest item from $k$ (?)
+                \item with array, min, max, prev, next all $\in O(n)$
+    
+            \end{enumerate}
+        \subsubsection{Dynamic Operations}
+            \begin{enumerate}
+                \item \code{insert\_at(x, i)} - insert element $x$ at index $i$
+                \item \code{delete\_at(i)} - delete and return element at $i$
+                \item with array, insert/delete $\in O(n)$
+            \end{enumerate}
+        \subsubsection{Running times}
+            \begin{enumerate}
+                \item with sorted array, $\code{find(k)}, \code{prev}, \code{next} \in O(\log n)$, insert/delete in n, find min/max in 1, build is nlogn
+            \end{enumerate}
+
+
+    \subsection{Direct access table}
+        \subsubsection{Example}
+        \begin{enumerate}
+            \item items are Reed students
+            \item ``keyspace'' is all possible 8-digit ID numbers
+            \item index by Reed ID makes $\code{find(k)} \in O(1)$, but wastes space
+        \end{enumerate}
+
+    \subsection{Hash tables}
+Before: sorting and searching using only comparisons on items.\\
+Now: use keys in more complex ways arrow direct access table\\
+
+\begin{verbatim}
+    h : {ids} -> {0, ... , m-1}
+    # assume m = Theta(m)
+\end{verbatim}
+store items as determined by h(key)\\
+cannot be a bijection\\
+collision: things in ids that map to same idem in codomain\\
+solution: instead of storing item in table, store pointer to another data structure\\
+``Chaining'' to some other data structure\\
+\begin{verbatim}
+    def hash.find(k):
+    digest = h(k)
+    c = get(h.direst) -> go find k?
+\end{verbatim}
+\subsubsection{Running time }
+ideally: all chains are constant size so then all operations on chains are constant size\\
+\\
+chose m,h such that all chains end up with about n/m approx O(1) things in them\\
+\subsubsection{Example}
+modular division: \verb|h(k) = k mod(m)|.\\
+Problem: only as even as keys themselves\\
+if too even, might get mapped to same thing\\
+\subsubsection{Better example: universal family of hash functions}
+example of one family:\\
+defien $h_{ab}(k) = (((ak +b)\mod p)\mod m)$ where $p$ is a large prime and 
+$a,b$ chosen randomly from 0 to p-1\\
+Formally, define family $\cH(p, m) = \{h_{ab}(k) ~|~ a, b \in [0 \dots p-1] \text{ and } a \neq 0 \}$
+desired property: for some $h \in \cH$, Pr that any pairs of keys collide [$h(k_1)= h(k_2)$] $\leq \frac{1}{m}$ for all k1, k2 such that k1 not equal k2 
+\\
+parallel concept for sorting comparison model\\
+lower bound Omega (n log n)
+\subsection{Binary Trees}
+\section{Running Time}
+\section{Correctness}
+\subsection{Loop invariants}
+\section{Recursion}
+running time for recursive algo
+"solving a recurrance"
+- substitution method
+- recurrence tree
+- master theorem
+\section{Limits}
+\subsection{Limit Laws}
+
+% L’Hospital’s Rule
+% suppose:
+% \[ \lim_{x\to\a} f(x)/g(x) = 0/0 \] or \[ \lim_{x\to\a} f(x)/g(x) = frac{+- infinity}{+- infinity} \]
+% where 
+% a
+%  can be any real number, infinity or negative infinity. In these cases we have,
+%  \lim_{x\to\a} f(x)/g(x) =\lim_{x\to\a} f(x)'/g(x)' =
+
+\section{Sorting}
+\subsection{Vocab}
+in place or not
+depends on situation, some algs better random, sorted, semi-random, etc
+\subsection{Permutation Sort}
+sorting
+
+permutation sort
+- input unsorted static array A
+- outputs a sorted permutation of A called B
+% - sorted means : B[i-1] \leq B[i] (values of keys, but when numbers dont need keys)
+
+
+1. generate all permutations of A -> n!
+2. for each permutation, check if it is sorted. if yes return permutation
+
+\subsection{Selection Sort}
+selection sort (A, i)
+1. finds biggest item in A[:i]
+2. swaps biggest thing with thing at A[i]
+3. recurse on A[:i-1]
+
+\subsection{Comparison}
+\subsection{Merge Sort}
+\begin{verbatim}
+    if n = 0, 1: done
+    otherwise:
+        split array into Left, Right
+        MergeSort(Left), MergeSort(Right)
+        Merge(Left, Right)
+\end{verbatim}
+\begin{enumerate}
+    \item specificity: array A, p starting point, r ending point
+    \item if p geq r (if p equal to r, then only one element and return)
+    \item convention: A[a:b] = [] if b less than A
+    \item a:b means including both end points
+    \item define midpoint $q = (p+r)/2$ (floor of the averge)
+    \item Left = A[p:q]
+    \item Right A[q+1:r]
+    \item MergeSort(A, p, q)
+    \item MergeSort(A, q+1, r)
+    \item Merge(A, p, q, r)
+\end{enumerate}
+\begin{enumerate}
+
+\item comparisons in constant time? \begin{enumerate}
+    \item mostly comparing integers
+    \item assume $i \leq j$ in constant time
+    \item might be more complex
+    \item    
+\end{enumerate}
+\end{enumerate}
+
+% Week 5
+\section{Sept 25th}
+\subsection{review}
+\begin{enumerate}
+    \item direct access Arrays
+    \item hash tables
+\end{enumerate}
+% Concepts so far
+% \subsection{Running time (how to count)}
+% \begin{enumerate}
+%     \item big o
+%     \item 
+% \end{enumerate}
+% \subsection{}
+% \subsection{recurrences}
+% \subsection{models of computation - which operations are O(1), word ram}
+
+\section{Binary Search Trees}
+O(h) time where h is height\\
+usually use these for sets\\
+example: set us cs profs\\
+name/id\\
+adam/560\\
+charlie/703\\
+erica/998\\
+greg/997\\
+jim/100\\
+include bst from notes\\
+properties: for any X, keys in x.left leq x.key leq keys x.right\\
+can also store a sequence in this way\\
+ex 2: grocery list\\
+apples, bananas, cereal, dish soap, eggs\\
+order doesn't matter\\
+bst property: for any L[i], all items in L[i].left appear before L[i]\\
+all items in right subtree appear after L[i]
+is balanced, height is at most O(log n)\\
+when balanced, called red-black trees\\
+\\
+\\
+\subsection{non-modifying operations}
+\begin{enumerate}
+    \item find min - all the down left
+    \item find max - all the way down right 
+    \item kind k - compare at every node
+    \item 
+\end{enumerate}
+\subsection{modifying properties}
+\begin{enumerate}
+    \item insert item: traverse, then insert as a leaf
+    \item delete: find successor and swap 16 with 17, then remove old leaf (find a safe leaf to remove)
+    \item 
+\end{enumerate}
+balanced if even under dynamic operations it maintains height O log N\\
+red-black tree\\
+\begin{enumerate}
+    \item dummy nodes
+    \item imagine single dummy node "tree ends"
+    \item stop drawing them
+\end{enumerate}
+loop invariants\\
+different cases for red black trees\\
+\section{priority queues and heaps}
+\subsection{Priority Queue Interface}
+new: delete max - remove item with highest priority\\
+find max = find highest priority item\\
+supports subset of set interface operations\\
+optemized for finding min or max, we will focus on max priority\\
+also has insert and build
+\subsection{priority queue sort}
+algo in slides\\
+simple because you make the ds do it\\
+\subsection{binary heaps}
+\subsubsection{infer tree from aray}
+require: completely full in upper levels (until last level)\\
+binary trees with n things -> arrays of length n\\
+bottom level should be left justified\\
+diferent than traversal ordering function\\
+root is index 0\\
+finding the left child of i is just at index 2i+1\\
+right(i) = 2i+2\\
+parent(i) = floor((i-1)/2)\\
+max heap properties:
+\begin{enumerate}
+    \item at node l, the value of thing at position l is going to be at least the value its children\\
+    \item 
+\end{enumerate}
+tree does not live in memory, just array\\
+we want higher importance nodes to be closer to the top\\
+bottom layer is less than all elements above it\\
+example 1 from slides: not a max heap: 15 is a node that is is not greater than or equal to both of its children\\
+\\
+inserting(x)\\
+-append x to array: whole function is in O(logn)\\
+-fix problems in heap\\
+fixing: swap up with parents until max heap rule is followed:\\
+check that val of parent geq val node, if no, swap and keep going\\
+delete-max():\\
+this deletes the root! \\
+1. swap root with item at node number n-1, then delete thing at n-1\\
+the fix downwards:\\
+- start at root\\
+- swap it with the greater key in its children, then continue\\
+this is o of log n time
+\section{Cheat Sheets}
+
+
+% % \begin{table}[h]
+% %     \small
+% %     \begin{tabular}{l ||| ccccc|||}
+    
+% %     \multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Sequence\\ Data Structure\end{tabular}} &
+% %     \multicolumn{5}{c|||}{Operations $O(\cdot)$} \\ \cline{2-6}
+% %       & \multicolumn{1}{c||}{Container}  
+% %       & \multicolumn{1}{c||}{Static} 
+% %       & \multicolumn{3}{c|||}{Dynamic}  \\ \cline{2-6} 
+% %       & \multicolumn{1}{c||}{\footnotesize${\mathtt{build(X)}}$} 
+% %       & \multicolumn{1}{c||}{\footnotesize\begin{tabular}[c] {@{}c@{}}${\mathtt{get\_at(i)}}$\\ ${\mathtt{set\_at(i,x)}}$\end{tabular}}
+% %       & \multicolumn{1}{c|}{\footnotesize\begin{tabular}[c]{@{}c@{}}${\mathtt{insert\_first(x)}}$\\ ${\mathtt{delete\_first()}}$\end{tabular}}
+% %       & \multicolumn{1}{c|}{\footnotesize\begin{tabular}[c]{@{}c@{}}${\mathtt{insert\_last(x)}}$\\ ${\mathtt{delete\_last()}}$\end{tabular}} &
+% %       \footnotesize\begin{tabular}[c|]{@{}c@{}}${\mathtt{insert\_at(i,x)}}$\\ ${\mathtt{delete\_at(i)}}$\end{tabular} \\ \hline
+      
+%     % Array   & \multicolumn{1}{c||}{\nTable{}} & \multicolumn{1}{c||}{\constTable{}} & \multicolumn{1}{c|}{\nTable{}}   & \multicolumn{1}{c|}{\nTable{}}     &  \multicolumn{1}{c|||}{\nTable{}}       \\ \hline
+%     % Linked List	 & \multicolumn{1}{c||}{\nTable{}}	 & \multicolumn{1}{c||}{\nTable{}} 	& \multicolumn{1}{c|}{\constTable{}} & \multicolumn{1}{c|}{\nTable{}}   & \multicolumn{1}{c|||}{\nTable{}}    \\ \hline
+%     % Dynamic Array  & \multicolumn{1}{c||}{\nTable{}}  & \multicolumn{1}{c||}{\constTable{}}  & \multicolumn{1}{c|}{\nTable{}}  & \multicolumn{1}{c|}{\customCell{\bestcolor}{$1_{(a)}$}}    &  \multicolumn{1}{c|||}{\nTable{}}    \\ \hline
+%     % Binary Tree  & \multicolumn{1}{c||}{\nlognTable{}}  & \multicolumn{1}{c||}{\hTable}  & \multicolumn{1}{c|}{\hTable{}}  & \multicolumn{1}{c|}{\hTable{}}    &  \multicolumn{1}{c|||}{\hTable{}}    \\ \hline
+%     % \end{tabular}
+%     % \end{table}
+    
+    
+    % \begin{table}[h]
+    % \normalsize
+    % \begin{tabular}{l ||| ccccc|||}
+    
+    % \multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Set\\ Data Structure\end{tabular}} &
+    % \multicolumn{5}{c|||}{Operations $O(\cdot)$} \\ \cline{2-6}
+    %   & \multicolumn{1}{c||}{Container}  
+    %   & \multicolumn{1}{c||}{Static} 
+    %   & \multicolumn{1}{c||}{Dynamic}  
+    %   & \multicolumn{2}{c|||}{Order}  \\ \cline{2-6} 
+    %   & \multicolumn{1}{c||}{\footnotesize${\mathtt{build(X)}}$} 
+    %   & \multicolumn{1}{c||}{\footnotesize${\mathtt{find(k)}}$}
+    %   & \multicolumn{1}{c||}{\footnotesize\begin{tabular}[c]{@{}c@{}}${\mathtt{insert(x)}}$\\ ${\mathtt{delete(k)}}$\end{tabular}}
+    %   & \multicolumn{1}{c|}{\footnotesize\begin{tabular}[c]{@{}c@{}}${\mathtt{find\_min()}}$\\ ${\mathtt{find\_max()}}$\end{tabular}} &
+    %   \footnotesize\begin{tabular}[c|]{@{}c@{}}${\mathtt{find\_prev(k)}}$\\ ${\mathtt{find\_next(k)}}$\end{tabular} \\ \hline 
+      
+    % Array   & \multicolumn{1}{c||}{\nTable{}} & \multicolumn{1}{c||}{\nTable{}} & \multicolumn{1}{c||}{\nTable{}}   & \multicolumn{1}{c|}{\nTable{}}     &  \multicolumn{1}{c|||}{\nTable{}}       \\ \hline
+    % Sorted Array	 & \multicolumn{1}{c||}{\nlognTable{}}	 & \multicolumn{1}{c||}{\lognTable{}} 	& \multicolumn{1}{c||}{\nTable{}} & \multicolumn{1}{c|}{\constTable{}}   & \multicolumn{1}{c|||}{\lognTable{}}    \\ \hline
+    % Direct Access Array  & \multicolumn{1}{c||}{\uTable{}}  & \multicolumn{1}{c||}{\constTable{}}  & \multicolumn{1}{c||}{\constTable{}}  & \multicolumn{1}{c|}{\uTable{}}    &  \multicolumn{1}{c|||}{\uTable{}}    \\ \hline
+    % Hash Table      & \multicolumn{1}{c||}{\customCell{\badcolor}{$n_{(e)}$}}  & \multicolumn{1}{c||}{\customCell{\bestcolor}{$1_{(e)}$}}                         & \multicolumn{1}{c||}{\customCell{\bestcolor}{$1_{(a)(e)}$}}  & \multicolumn{1}{c|}{\nTable{}}   &   \multicolumn{1}{c|||}{\nTable{}}                                                                                    \\ \hline
+    % Binary Tree      & \multicolumn{1}{c||}{\nTable{}}  & \multicolumn{1}{c||}{\hTable{}}  & \multicolumn{1}{c||}{\hTable{}}  & \multicolumn{1}{c|}{\hTable{}}   &   \multicolumn{1}{c|||}{\hTable{}}                                                                                    \\ \hline
+    % \end{tabular}
+    % \end{table}
+    
+
+
+
+
+\subsection{Running Times for DS}
+\begin{center}
+    
+
+\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|p{3cm}|  }
+    \hline
+    \multicolumn{5}{|c|}{Operations $O(\cdot)$} \\
+    \hline
+    Set Data Structure& Container& Static& Dynamic& Order\\
+    \hline
+    array&   AX  & ALA   &248\\
+    sorted array&AL & ALB&  008\\
+
+    \hline
+   \end{tabular}
+\end{center}
+\subsection{orders}
+
+
+\section{servers}
+\begin{enumerate}
+    \item servers and clients
+    \item each server: some capacity
+    \item each client: some workload
+    \item assign so that no server goes over its capacity
+\end{enumerate}
+implementation
+\begin{enumerate}
+    \item initialize(X) whre X is set of servers
+    \item connect(client, workload)
+    \item disconnect(client)
+    \item clients-of(server): return list of clients connected to that server
+\end{enumerate}
+how to do:\\
+idea\\
+use priority queue for clients and prioritize biggest \\
+priority queue for servers so that you can find best fit the best\\
+\\
+notes on actual:\\
+server has set of clients where key is client id and value is workload\\
+priority queue storing the servers\\
+store based on priorty, which is available capacity\\
+\\
+structures:\\
+pq P:(server.id, available capacity)\\
+set S: (maps server id to set of clients and pointer to si in P)
+set C: maps client id to connected server and workload (if not stored as client object)
+
+\section{Graph algorithms}
+    \subsection{Definition}
+        \begin{enumerate}
+            \item $G = (V, E)$ where for all $(u,v) \in E, $ $u \neq v$ and no duplicate edges (for this class)
+            \item $Adj+(u) := \{v \in V ~|~ (u, v) \in E\}$ (outgoing neighbors of node $u$)
+            \item incoming neighbord of u Adj - (u) = set(v in V st (v, u) in E)
+            \item out degree(u) = size of adj+
+            \item in degree(u) = size adj -\\
+        \end{enumerate}
+    \subsection{Representing graphs}
+    matrix or adj list\\
+    storing:\\
+    top level set adj of vertices\\
+    lower level: adj lists Adj(u) either set or sequence (default to outgoing\\
+    can be direct access array\\
+    )
+    \subsection{Running time}
+        \begin{enumerate}
+            \item linear means O(V + E) (size of those sets)
+            \subitem doing something with each edge and each vertex
+            \item $|E| = O(V^2)$ for simple graphs
+            \subitem most edges you can have is fully connected graph
+            \item undirected: |E| leq size of V choose 2 (proved on homework)
+            \item directed : |E| leq 2 times (V size chose 2)
+        \end{enumerate}
+
+
+
+\subsection{Breadth-first search}
+
+
+\subsection{Path problems}
+
+\section{Log rules}
+\begin{tabular}{|c|c|}
+    \hline
+    Product rule & $\log_b(MN)=\log_b(M)+\log_b(N)$ \\
+    \hline
+    Quotient rule & $\log_b\left(\dfrac{M}{N}\right)=\log_b(M)-\log_b(N)$ \\
+    \hline Power rule & $\log_b(M^p)=p\cdot\log_b(M)$\\
+    \hline Base switch rule & $\log_b(c)=\frac{1}{\log_c(b)}$\\
+    \hline Base change rule & $\log_b(x)=\frac{\log_c(x)}{\log_c(b)}$\\
+    \hline
+    \end{tabular}
+
+
+
+
+% \section{Feedback}
+% \subsection{Problem set 1}
+% \begin{enumerate}
+%     \item Missing justification of $n \leq (log n)^(log n)$
+%     \item Give a specific expression for the new $n_0, c_1, c_2$ in 
+%     terms of the corresponding constants for f and g. 
+%     Also, note that the definition of f(n) in O(g) (or Theta(g), 
+%     or Omega(g)) only tells us that there exist constants such that 
+%     the inequality holds, not necessarily equality. So in the case of O(g), 
+%     we know there exist c, $n_0$ s.t. $0<=f(n)<=c g(n)$ for all $n>=n_0$, 
+%     but it is not necessarily true that there exists c, $n_0$ s.t. $f(n)=c g(n)$ 
+%     for all $n>=n_0 (<= vs =)$.
+% \end{enumerate}
+% \subsection{Problem set 2}
+% \subsection{Problem set 3c}
+
+
+
+
+
+
+% % \subsection{Citation}
+
+% % This is a citation\cite{Eg}.
+
+% % \newpage
+
+% % % ------------------------------------------------------------------------------
+% % % Reference and Cited Works
+% % % ------------------------------------------------------------------------------
+
+% % \bibliographystyle{IEEEtran}
+% % \bibliography{References.bib}
+
+% % % ------------------------------------------------------------------------------
+
+
+
+
+
+\end{document}
