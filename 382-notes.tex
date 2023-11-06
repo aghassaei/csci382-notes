@@ -106,9 +106,40 @@
             	$\lim_{n\to\infty}f(n)/g(n) = \infty$  &	$\Rightarrow f= \omega(g)$
             	\end{tabular}\par
             }
-
+            \textbf{More: }
+            \begin{align*}
+                f_1 = O(g_1) \tand f_2 = O(g_2) \implies f_1+f_2= O(\max(g_1,g_2))
+            \end{align*}
 
         \subsubsection{Recurrences (substitution, recurrence trees, master theorem)}
+        \subsection{Master method}
+        Apply Master theorem to solve recurrances of the form $T(n) = aT(n/b) + f(n)$ where $a \geq 1$, $b > 1$, and that $f(n)$ is asymptotically nonnegative.\\
+        \textbf{Master Theorem: }
+        fix this later
+        \begin{theorem}
+            
+            \textbf{Case 1:} If $f(n) = O(n^{\log_{b}a -\epsilon})$ for some constant $a > 0$, then $T(n) = n \log^b a$.
+
+            \textit{Intuition:} When $f(n)$ is polynomially less than the watershed function, the cost of leaves dominates the cost of the rest of the tree.
+
+            \textbf{Case 2:} If $f(n) = O(n \log^b a \log^k n)$ for some constant $k > 0$, then $T(n) = n \log^b a \log^{k+1} n$.
+
+            \textit{Intuition:} There are $\log n$ levels, each with a cost of $n \log^b a \log kn$.
+
+            \textit{Simple (common) case:} $k = 0 \Rightarrow f(n) = n \log^b a \Rightarrow T(n) = n \log^b a \log n$.
+
+            \textbf{Case 3:} If $f(n) = n \log^b a +$ for some constant $a > 0$, and $f(n)$ satisfies the regularity condition (below), then $T(n) = f(n)$.
+
+            \textit{Regularity condition:} $a f(n/b)^c \leq f(n)$ for some constant $c < 1$ and all large enough $n$. (Usually true for polynomial $f(n)$.)
+
+            \textit{Intuition:} When $f(n)$ is polynomially greater than the watershed $f(n)$, the cost of the root dominates the cost of the leaves.
+
+        \end{theorem}
+        \subsection{Recurrence trees}
+        If of the form $T(n) = aT(n/b) + f(n)$, the each node has $a$ branches and the starting $a$ branches will be $n/b$. Then next layer will be $n/b^2$ because you are plugging $n/b$ for $n$ in $T(n)$.\\
+        The first layer is $f(n)$ time to combine, next layer will be $a/$ the denominator in that branch all times $f(n)$, basically the watershed function when you plug the new $n$ in\\
+        keep going till you get $1$. depth = log n base whatever n was divided by. make it into a sum
+        
         \begin{enumerate}
             \item given recurrance relation, prove that it's in some class
             \item method: (recurrence tree) -> guess, -> substitution method
@@ -274,9 +305,35 @@ desired property: for some $h \in \cH$, Pr that any pairs of keys collide [$h(k_
 parallel concept for sorting comparison model\\
 lower bound Omega (n log n)
 \subsection{Binary Trees}
+traversal order: flatten tree
+\textbf{Operations: }
+\begin{enumerate}
+    \item \code{find\_first()}: finds the first node in traversal order. go left until you can't anymore
+    \item \code{find\_last()}: finds last node in traversal order. goes right until you can't anymore 
+\end{enumerate}
 \section{Running Time}
-\section{Correctness}
-\subsection{Loop invariants}
+\subsection{red black}
+root black\\
+every leaf black\\
+if node is red, both children are black\\
+for every node, all paths from node to each descendant have same number of black nodes
+
+
+
+\section{Correctness proof}
+\subsection{Loop invariant method}
+\textbf{Sketch: }
+\begin{enumerate}
+    \item Define a loop invariant $L$
+    \item \textbf{Initialization: }prove $L$ holds before 1st iteration
+    \item \textbf{Maintenance: }if $L$ holds before loop, still true before next one
+    \item \textbf{Termination: }show that loop terminates and that $L$ still holds
+\end{enumerate}
+
+
+
+
+
 \section{Recursion}
 running time for recursive algo
 "solving a recurrance"
@@ -295,28 +352,38 @@ running time for recursive algo
 %  \lim_{x\to\a} f(x)/g(x) =\lim_{x\to\a} f(x)'/g(x)' =
 
 \section{Sorting}
-\subsection{Vocab}
-in place or not
-depends on situation, some algs better random, sorted, semi-random, etc
+
+\begin{tabular}{|c||c|c|c|}
+    \hline
+    \textbf{Sorting Algorithm} & \textbf{Best Case} & \textbf{Average Case} & \textbf{Worst Case} \\
+    \hline
+    \textbf{Bubble Sort} & $O(n)$ & $O(n^2)$ & $O(n^2)$ \\
+    \textbf{Selection Sort} & $O(n^2)$ & $O(n^2)$ & $O(n^2)$ \\
+    \textbf{Insertion Sort} & $O(n)$ & $O(n^2)$ & $O(n^2)$ \\
+    \textbf{Merge Sort} & $O(n \log n)$ & $O(n \log n)$ & $O(n \log n)$ \\
+    \textbf{Quick Sort} & $O(n \log n)$ & $O(n \log n)$ & $O(n^2)$ \\
+    \textbf{Heap Sort} & $O(n \log n)$ & $O(n \log n)$ & $O(n \log n)$ \\
+    % \textbf{Counting Sort} & $O(n + k)$ & $O(n + k)$ & $O(n + k)$ \\
+    % \textbf{Radix Sort} & $O(nk)$ & $O(nk)$ & $O(nk)$ \\
+    \hline
+    \end{tabular}
+
 \subsection{Permutation Sort}
-sorting
-
-permutation sort
-- input unsorted static array A
-- outputs a sorted permutation of A called B
-% - sorted means : B[i-1] \leq B[i] (values of keys, but when numbers dont need keys)
-
-
-1. generate all permutations of A -> n!
-2. for each permutation, check if it is sorted. if yes return permutation
+    \begin{verbatim}
+        permutation_sort(A):
+            generate every possible permutation of A
+            check if A is sorted
+            continue until you find a sorted permutation
+    \end{verbatim}
 
 \subsection{Selection Sort}
-selection sort (A, i)
-1. finds biggest item in A[:i]
-2. swaps biggest thing with thing at A[i]
-3. recurse on A[:i-1]
+    \begin{verbatim}
+        selection_sort(A, i):
+            1. finds biggest item in A[:i]
+            2. swaps biggest thing with thing at A[i]
+            3. recurse on A[:i-1]
+    \end{verbatim}
 
-\subsection{Comparison}
 \subsection{Merge Sort}
 \begin{verbatim}
     if n = 0, 1: done
@@ -347,22 +414,6 @@ selection sort (A, i)
 \end{enumerate}
 \end{enumerate}
 
-% Week 5
-\section{Sept 25th}
-\subsection{review}
-\begin{enumerate}
-    \item direct access Arrays
-    \item hash tables
-\end{enumerate}
-% Concepts so far
-% \subsection{Running time (how to count)}
-% \begin{enumerate}
-%     \item big o
-%     \item 
-% \end{enumerate}
-% \subsection{}
-% \subsection{recurrences}
-% \subsection{models of computation - which operations are O(1), word ram}
 
 \section{Binary Search Trees}
 O(h) time where h is height\\
@@ -585,7 +636,11 @@ set C: maps client id to connected server and workload (if not stored as client 
 
 \subsection{Path problems}
 
-\section{Log rules}
+
+
+\section{Rules}
+\subsection{Sum rules}
+\subsection{Log rules}
 \begin{tabular}{|c|c|}
     \hline
     Product rule & $\log_b(MN)=\log_b(M)+\log_b(N)$ \\
@@ -596,6 +651,19 @@ set C: maps client id to connected server and workload (if not stored as client 
     \hline Base change rule & $\log_b(x)=\frac{\log_c(x)}{\log_c(b)}$\\
     \hline
     \end{tabular}
+
+
+\section{Midterm review}
+
+
+\section{Lecture 16}
+\subsection{Topological Sort}
+"finishing order" - order in which is finishes visiting (recursive calls pop all the way up)\\
+DAG meaning?\\
+\begin{definition}
+    Topological order of $G = (V, E):$ ordering of vertices such that every (u, v) in E satisfies that u is before v in the order (in context of directed graphs)
+\end{definition}
+Find topological ordering of graphs
 
 
 

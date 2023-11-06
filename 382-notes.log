@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.31)  31 OCT 2023 16:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.31)  6 NOV 2023 14:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -812,120 +812,125 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [4] [5]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 128.
+(hyperref)                than one, level fixed on input line 159.
 
-[6]
-Overfull \hbox (61.80794pt too wide) in paragraph at lines 162--175
+[6] [7]
+Overfull \hbox (61.80794pt too wide) in paragraph at lines 193--206
 [] 
  []
 
 
-Overfull \hbox (7.30238pt too wide) in paragraph at lines 178--190
+Overfull \hbox (7.30238pt too wide) in paragraph at lines 209--221
 [] 
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 242--244
-
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 249--254
+Underfull \hbox (badness 10000) in paragraph at lines 273--275
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 280--285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--263
+Underfull \hbox (badness 10000) in paragraph at lines 291--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--263
+Underfull \hbox (badness 10000) in paragraph at lines 291--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--267
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
 
  []
 
-[9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 368--389
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 368--389
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 419--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--389
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 402--404
+Underfull \hbox (badness 10000) in paragraph at lines 419--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--411
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 419--421
+Underfull \hbox (badness 10000) in paragraph at lines 419--440
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 433--435
+Underfull \hbox (badness 10000) in paragraph at lines 453--455
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 436--453
+Underfull \hbox (badness 10000) in paragraph at lines 460--462
 
- []
-
-
-Overfull \hbox (19.03629pt too wide) in paragraph at lines 511--522
- [] 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 540--554
+Underfull \hbox (badness 10000) in paragraph at lines 470--472
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 540--554
+Underfull \hbox (badness 10000) in paragraph at lines 484--486
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 562--563
+Underfull \hbox (badness 10000) in paragraph at lines 487--504
 
  []
 
-[14] [15] (./382-notes.aux)
+[14]
+Overfull \hbox (19.03629pt too wide) in paragraph at lines 562--573
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 591--605
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 591--605
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 613--614
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 661--665
+
+ []
+
+[16] [17] (./382-notes.aux)
 Package rerunfilecheck Info: File `382-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 683A9EFB3E17185C8EB46C0A92DED7E2;10367.
+(rerunfilecheck)             Checksum: A9D8C23DCE06ED8234092B15A6AD2553;10984.
  ) 
 Here is how much of TeX's memory you used:
- 28148 strings out of 478268
- 550686 string characters out of 5846347
- 956842 words of memory out of 5000000
- 45687 multiletter control sequences out of 15000+600000
- 478234 words of font info for 64 fonts, out of 8000000 for 9000
+ 28170 strings out of 478268
+ 550963 string characters out of 5846347
+ 955842 words of memory out of 5000000
+ 45694 multiletter control sequences out of 15000+600000
+ 478580 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,10n,83p,648b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on 382-notes.pdf (15 pages, 194354 bytes).
+ 88i,10n,83p,648b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on 382-notes.pdf (17 pages, 217415 bytes).
 PDF statistics:
- 615 PDF objects out of 1000 (max. 8388607)
- 568 compressed objects within 6 object streams
- 181 named destinations out of 1000 (max. 500000)
- 557 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 659 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
+ 195 named destinations out of 1000 (max. 500000)
+ 589 words of extra memory for PDF output out of 10000 (max. 10000000)
 
