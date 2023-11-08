@@ -663,7 +663,98 @@ DAG meaning?\\
 \begin{definition}
     Topological order of $G = (V, E):$ ordering of vertices such that every (u, v) in E satisfies that u is before v in the order (in context of directed graphs)
 \end{definition}
-Find topological ordering of graphs
+Find topological ordering of graph:
+Edges = (A,C)
+(C, E)
+(A, B)
+(B, G)
+(B, E)
+(C, D)
+(E, D)
+(E, F)
+
+check: ACBEDFG
+
+other: ABGCEDF
+
+order for F and G don't matter
+
+Story problem: teams
+
+Solution sketch:
+\begin{enumerate}
+    \item Given info, what is the graph? vertices = set of employees, edges are links
+    \item goal: a topological ordering satisfies the constraint
+    \item find topological ordering or prove none exists
+    \item prove none exists: get sequence, check if topological
+    \item (reverse of visiting order is a topological sort)
+    \item solution exists iff G is a DAG 
+    \item alternatively show a cycle so there is no ordering
+    \item or show graph is acyclic -> topological ordering exists
+\end{enumerate}
+can solve by cycle detection problem
+% Given: list of employees and information about how employees are linked
+
+% stratify in levels, break ties somehow
+
+% doesn't work if there is a cycle in the graph
+
+% must be someone with no incoming edges 
+
+
+\subsection{Weighted Graphs}
+unweighted: distance is num edges in shortest paths\\
+add a weight function from set of edges to integers\\
+\subsection{weighted paths terminology}
+why infinum? has to do with range of weights we're trying to consider
+
+problem with negative weghts and cycles\\
+confused...
+
+get nice graph
+
+
+\section{Lecture 17}
+assume G is (undirected) graph satisfies def 1 (show that G must also satisfy def 2)
+
+
+weighted graphs
+given shortest paths weights, can compute shortest paths tree in linear time (O(V + E))
+
+
+
+\subsection{DAG Relaxation}
+high level: 
+
+for each vertex, maintain estimate which is upper bound as true shortest distance distance
+
+repeatedly improve
+
+refining estimates: true shortest-path weight between any pair of vertices u, v is upper bounded by 
+weight of shortest path from u to v that has a specific last edge (x, v)
+
+proposing path through x as possible path
+
+
+see slide for formal definition
+
+update estimate to use edge if edge exists to make it shorter
+
+
+
+\subsection{Bellman-Ford}
+
+
+
+\section{Logical Equivalence}
+
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    Contrapositive & $P \implies Q$ & $!Q \implies !P$ \\
+    \hline
+
+\end{tabular}
 
 
 

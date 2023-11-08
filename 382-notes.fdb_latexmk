@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1699311030 "/Users/aghassaei/Documents/academics/2023/csci382/csci382-notes/382-notes.tex" "382-notes.pdf" "382-notes" 1699311031
-  "/Users/aghassaei/Documents/academics/2023/csci382/csci382-notes/382-notes.tex" 1699311029 29082 9bc876c29b088c5b55eda81f93ceee7b ""
+["pdflatex"] 1699484842 "/Users/aghassaei/Documents/academics/2023/csci382/csci382-notes/382-notes.tex" "382-notes.pdf" "382-notes" 1699484844
+  "/Users/aghassaei/Documents/academics/2023/csci382/csci382-notes/382-notes.tex" 1699484841 31217 def2daa14bf60e551583f1f70c51c565 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -207,10 +207,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1661973395 2826443 fd5629998843e4175cffe0fd8ec11844 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "382-notes.aux" 1699311031 11311 b47ea36161490a290508644532b550eb "pdflatex"
-  "382-notes.out" 1699311031 10984 a9d8c23dce06ed8234092b15a6ad2553 "pdflatex"
-  "382-notes.tex" 1699311029 29082 9bc876c29b088c5b55eda81f93ceee7b ""
-  "382-notes.toc" 1699311031 6232 194844dc3f2827fb2f3f81feb4156aa5 "pdflatex"
+  "382-notes.aux" 1699484843 12054 0044b38a77ede79ea4ad21c1bf48380b "pdflatex"
+  "382-notes.out" 1699484843 11812 0a06fc87343ee4c837a392b73bddb8bb "pdflatex"
+  "382-notes.tex" 1699484841 31217 def2daa14bf60e551583f1f70c51c565 ""
+  "382-notes.toc" 1699484843 6729 e37e8fb8368c55121f2d99445f00efe2 "pdflatex"
   "macros.tex" 1698781316 6733 6bbea3d78fededa538c6b9ed1e9e60a7 ""
   (generated)
   "382-notes.aux"
