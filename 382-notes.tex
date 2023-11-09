@@ -724,7 +724,7 @@ given shortest paths weights, can compute shortest paths tree in linear time (O(
 
 
 \subsection{DAG Relaxation}
-high level: 
+\subsubsection{high level: }
 
 for each vertex, maintain estimate which is upper bound as true shortest distance distance
 
@@ -740,7 +740,55 @@ see slide for formal definition
 
 update estimate to use edge if edge exists to make it shorter
 
+\subsubsection{DAG Relaxation Algorithm}
+\begin{verbatim}
+    DAG-Relaxation_SP(G,s):
+    1. Initialize estimates:
+      d(s,v) = inf for all v in V (excluding s)
+      d(s,s) = 0
+    2. For each u in G in topological order:
+      For each outgoing neighbor v in Adj+(u)
 
+      ect
+\end{verbatim}
+
+\subsubsection{Correctness of DAG}
+Correctness condition:
+
+Proof sketch: show .....
+
+Base case: vertex $s$ and every vertex before s in topological order satisfies claim at the start
+(because everything is assigned a distance of infinity)
+
+inductivve step: assume claim holds
+
+let pi be some shortest path from s to v, and let (u,v) be the last edge of pi
+
+u must be beore v in top order, by induction, we already processed u, so by induction, 
+estimate is true distance
+
+after processing u:
+
+1. see slides
+2. see slides
+
+
+
+
+
+
+input: graph G and s (any vertex, sometimes called source even though it's not a true source always)
+output: mapping from v in V to true distances from s, v
+
+
+
+
+exercises:
+
+Exercise 1: given undirected graph G, return whether G contains a negative-weight cycle
+
+
+return true if there exists an edge such that w(edge) is negative
 
 \subsection{Bellman-Ford}
 
@@ -751,7 +799,7 @@ update estimate to use edge if edge exists to make it shorter
 
 \begin{tabular}{|c|c|c|}
     \hline
-    Contrapositive & $P \implies Q$ & $!Q \implies !P$ \\
+    Contrapositive & $P \implies Q$ & $\neg Q \implies \neg P$ \\
     \hline
 
 \end{tabular}
