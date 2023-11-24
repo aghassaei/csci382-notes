@@ -790,7 +790,68 @@ Exercise 1: given undirected graph G, return whether G contains a negative-weigh
 
 return true if there exists an edge such that w(edge) is negative
 
+
+\section{Lecture 18}
 \subsection{Bellman-Ford}
+cycles and neg weights ok, so need to do neg weight cycle deal with\\
+idea: more relaxation: while we can improve our estimate, keep improving\\
+edge is tense if $d(s,v) > d(s,u) + w(u,v)$ for some $u$
+definitions: see slides\\
+claim: after at most V-1 iterations, bellmanford halts with correct edge weights\\
+subclaim: after i iterations, d(s,v) leq deltai()
+\subsection{notation}
+$\delta (u,v)$: ``true'' min weight from u $\rightarrow$ v\\
+$d(u,v)$: current estimate of min weight from u $\rightarrow$ v\\
+$w(u,v)$: weight of the edge from u $\rightarrow$ v\\
+
+\subsection{Dijkstra's Algorithm}
+like weighted bfs but priority queue\\
+distance estimate for priority queue\\
+``changeable'' priority queue to update the keys
+
+\begin{verbatim}
+    DIJKSTRA(G, w, s):
+        INITIALIZE-SINGLE-SOURCE(G, s)
+        S = {}
+        Q = {}
+        for each vertex u in G.V 
+            INSERT(Q, u)
+        while Q not empty:
+            u = EXTRACT-MIN(Q)
+            S = S + {u}
+            for each vertex v in 
+
+\end{verbatim}
+
+what is running time as function of:\\
+
+insert: V\\
+extract-min: V \\
+decrease-key: E\\
+
+
+fib heap (best for Dijkstra) which makes running time $O(|E| + |V|log|V|)$\\
+sometimes insert can be replaced with build depending on implementation
+
+dynamic array
+
+binary heap
+
+Correctness:
+
+
+
+\section{Midterm Review}
+Some things to know:
+
+\begin{align*}
+    n^2 \notin o(2n^2)\\
+    \log_2 (n^2) \in \Theta (\log_2 n)\\
+   (\log_2 (n))^2 \notin \Theta (\log_2 n)\\
+   \log_{10}(n) \in \Theta (\log_2(n))\\
+   \sqrt{n} \in \omega(log_2(n))\\
+   \sqrt{n} \in \Theta(n)
+\end{align*}
 
 
 
